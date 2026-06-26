@@ -238,7 +238,22 @@
             width: 100px;
         }
 
-        
+        .qr-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.1);
+            /* merah transparan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 999;
+            pointer-events: none;
+            /* biar tidak mengganggu interaksi */
+        }
 
         .qr-overlay p {
             font-size: 28px;
@@ -289,7 +304,7 @@
             <div class="certificate-id">
                 29042026701220226R01243514
             </div>
-                            <!-- <p style="font-size: 10px; color: red;">(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat) -->
+                            <p style="font-size: 10px; color: red;">(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)
                 </p>
                         <p>Unit Teknologi Informasi dan Pangkalan Data (UTIPD) <br>Universitas Islam Negeri Sultan Thaha Saifuddin
                 Jambi menerangkan:</p>
@@ -370,7 +385,7 @@
         </div>
 
                     <div class="qr-overlay">
-                <!-- <p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p> -->
+                <p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>
             </div>
         
         <script>
