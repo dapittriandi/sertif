@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/keaslian-sertifikat/10367",
+      "destination": "/index.html"
+    }
+  ]
+}
