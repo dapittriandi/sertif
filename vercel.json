@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/keaslian-sertifikat/10367", "destination": "/index.html" }
+    { "source": "/keaslian-sertifikat/:id", "destination": "/keaslian-sertifikat/index.html" }
   ]
 }

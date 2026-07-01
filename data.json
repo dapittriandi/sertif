@@ -1,0 +1,32 @@
+{
+  "10367": {
+    "nama": "DAPIT TRIANDI",
+    "nim": "701220226",
+    "prodi": "Sistem Informasi",
+    "tanggal": "06 Mei 2026",
+    "tanggal_sertifikat": "13 Mei 2026",
+    "nomor_sertifikat": "29042026701220226R01243514",
+    "foto": "/images/photo-mhs/image.jpg",
+    "nilai": [
+      { "materi": "Microsoft Word", "nilai": 75, "grade": "B" },
+      { "materi": "Microsoft Excel", "nilai": 75, "grade": "B" },
+      { "materi": "Microsoft PowerPoint", "nilai": 78, "grade": "B" },
+      { "materi": "Internet", "nilai": 75, "grade": "B" }
+    ]
+  },
+  "10368": {
+    "nama": "NAMA MAHASISWA LAIN",
+    "nim": "701220227",
+    "prodi": "Sistem Informasi",
+    "tanggal": "06 Mei 2026",
+    "tanggal_sertifikat": "13 Mei 2026",
+    "nomor_sertifikat": "29042026701220227R01243515",
+    "foto": "/images/image2.jpg",
+    "nilai": [
+      { "materi": "Microsoft Word", "nilai": 80, "grade": "A" },
+      { "materi": "Microsoft Excel", "nilai": 78, "grade": "B" },
+      { "materi": "Microsoft PowerPoint", "nilai": 82, "grade": "A" },
+      { "materi": "Internet", "nilai": 80, "grade": "A" }
+    ]
+  }
+}
