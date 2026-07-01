@@ -3,10 +3,10 @@
     "nama": "DAPIT TRIANDI",
     "nim": "701220226",
     "prodi": "Sistem Informasi",
-    "tanggal": "06 Mei 2026",
+    "tanggal_ujian": "06 Mei 2026",
     "tanggal_sertifikat": "13 Mei 2026",
     "nomor_sertifikat": "29042026701220226R01243514",
-    "foto": "/images/photo-mhs/image.jpg",
+    "foto": "/images/photo-mhs/10367.jpg",
     "nilai": [
       { "materi": "Microsoft Word", "nilai": 75, "grade": "B" },
       { "materi": "Microsoft Excel", "nilai": 75, "grade": "B" },
@@ -15,18 +15,33 @@
     ]
   },
   "10368": {
-    "nama": "NAMA MAHASISWA LAIN",
+    "nama": "AHMAD FAUZI",
     "nim": "701220227",
     "prodi": "Sistem Informasi",
-    "tanggal": "06 Mei 2026",
+    "tanggal_ujian": "06 Mei 2026",
     "tanggal_sertifikat": "13 Mei 2026",
     "nomor_sertifikat": "29042026701220227R01243515",
-    "foto": "/images/image2.jpg",
+    "foto": "/images/photo-mhs/10368.jpg",
     "nilai": [
-      { "materi": "Microsoft Word", "nilai": 80, "grade": "A" },
-      { "materi": "Microsoft Excel", "nilai": 78, "grade": "B" },
-      { "materi": "Microsoft PowerPoint", "nilai": 82, "grade": "A" },
-      { "materi": "Internet", "nilai": 80, "grade": "A" }
+      { "materi": "Microsoft Word", "nilai": 82, "grade": "A" },
+      { "materi": "Microsoft Excel", "nilai": 80, "grade": "A" },
+      { "materi": "Microsoft PowerPoint", "nilai": 85, "grade": "A" },
+      { "materi": "Internet", "nilai": 78, "grade": "B" }
+    ]
+  },
+  "10369": {
+    "nama": "SITI RAHMAWATI",
+    "nim": "701220228",
+    "prodi": "Sistem Informasi",
+    "tanggal_ujian": "06 Mei 2026",
+    "tanggal_sertifikat": "13 Mei 2026",
+    "nomor_sertifikat": "29042026701220228R01243516",
+    "foto": "/images/photo-mhs/10369.jpg",
+    "nilai": [
+      { "materi": "Microsoft Word", "nilai": 90, "grade": "A" },
+      { "materi": "Microsoft Excel", "nilai": 88, "grade": "A" },
+      { "materi": "Microsoft PowerPoint", "nilai": 91, "grade": "A" },
+      { "materi": "Internet", "nilai": 85, "grade": "A" }
     ]
   }
 }
