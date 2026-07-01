@@ -322,20 +322,18 @@
                         '<p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>' +
                     '</div>';
 
-                // Generate QR Code sebagai image
-                try {
-                    QRCode.toDataURL(
-                        window.location.href,
-                        { width: 80, margin: 1 },
-                        function(err, url) {
-                            if (!err) {
-                                var qrImg = document.getElementById('qr-img');
-                                if (qrImg) qrImg.src = url;
-                            }
-                            setTimeout(function() { window.print(); }, 500);
-                        }
-                    );
-                } catch(e) {
+                // Generate QR Code via Google Chart API
+                var qrImg = document.getElementById('qr-img');
+                if (qrImg) {
+                    var qrUrl = 'https://chart.googleapis.com/chart?cht=qr&chs=80x80&chl=' + encodeURIComponent(window.location.href);
+                    qrImg.src = qrUrl;
+                    qrImg.onload = function() {
+                        setTimeout(function() { window.print(); }, 500);
+                    };
+                    qrImg.onerror = function() {
+                        setTimeout(function() { window.print(); }, 500);
+                    };
+                } else {
                     setTimeout(function() { window.print(); }, 500);
                 }
             })
