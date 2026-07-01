@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <title>SERTIFIKAT</title>
     <style>
         :root {
@@ -185,6 +185,12 @@
             margin: 2mm 0 1mm;
         }
 
+        .qr-code img,
+        .qr-code canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
         .signature-identity {
             margin-top: 1mm;
         }
@@ -310,7 +316,7 @@
                             '<p>' +
                                 'Jambi, ' + cert.tanggal_sertifikat + '<br>' +
                                 'Kepala Unit Teknologi Informasi dan <br>Pangkalan Data <br>' +
-                                '<img id="qr-img" class="qr-code" alt="QR Code">' +
+                                '<div id="qr-div" class="qr-code"></div>' +
                                 '<span class="signature-identity">' +
                                     'Titin Agustin Nengsih, S.Si., M.Si., Ph.D<br>' +
                                     'NIP. 198208162006042002' +
@@ -322,20 +328,19 @@
                         '<p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>' +
                     '</div>';
 
-                // Generate QR Code via Google Chart API
-                var qrImg = document.getElementById('qr-img');
-                if (qrImg) {
-                    var qrUrl = 'https://chart.googleapis.com/chart?cht=qr&chs=80x80&chl=' + encodeURIComponent(window.location.href);
-                    qrImg.src = qrUrl;
-                    qrImg.onload = function() {
-                        setTimeout(function() { window.print(); }, 500);
-                    };
-                    qrImg.onerror = function() {
-                        setTimeout(function() { window.print(); }, 500);
-                    };
-                } else {
-                    setTimeout(function() { window.print(); }, 500);
-                }
+                // Tunggu DOM siap baru generate QR
+                setTimeout(function() {
+                    var qrDiv = document.getElementById('qr-div');
+                    if (qrDiv && typeof QRCode !== 'undefined') {
+                        new QRCode(qrDiv, {
+                            text: window.location.href,
+                            width: 60,
+                            height: 60,
+                            correctLevel: QRCode.CorrectLevel.M
+                        });
+                    }
+                    setTimeout(function() { window.print(); }, 800);
+                }, 300);
             })
             .catch(function(err) {
                 console.error('Fetch error:', err);
