@@ -310,7 +310,7 @@
                             '<p>' +
                                 'Jambi, ' + cert.tanggal_sertifikat + '<br>' +
                                 'Kepala Unit Teknologi Informasi dan <br>Pangkalan Data <br>' +
-                                '<canvas id="qr-canvas" class="qr-code"></canvas>' +
+                                '<img id="qr-img" class="qr-code" alt="QR Code">' +
                                 '<span class="signature-identity">' +
                                     'Titin Agustin Nengsih, S.Si., M.Si., Ph.D<br>' +
                                     'NIP. 198208162006042002' +
@@ -322,13 +322,16 @@
                         '<p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>' +
                     '</div>';
 
-                // Generate QR Code — print dipanggil SETELAH QR selesai
+                // Generate QR Code sebagai image
                 try {
-                    QRCode.toCanvas(
-                        document.getElementById('qr-canvas'),
+                    QRCode.toDataURL(
                         window.location.href,
-                        { width: 80 },
-                        function(err) {
+                        { width: 80, margin: 1 },
+                        function(err, url) {
+                            if (!err) {
+                                var qrImg = document.getElementById('qr-img');
+                                if (qrImg) qrImg.src = url;
+                            }
                             setTimeout(function() { window.print(); }, 500);
                         }
                     );
