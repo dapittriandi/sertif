@@ -6,7 +6,7 @@
     "tanggal_ujian": "06 Mei 2026",
     "tanggal_sertifikat": "13 Mei 2026",
     "nomor_sertifikat": "29042026701220226R01243514",
-    "foto": "/images/photo-mhs/10367.jpg",
+    "foto": "/images/photo-mhs/image.jpg",
     "nilai": [
       { "materi": "Microsoft Word", "nilai": 75, "grade": "B" },
       { "materi": "Microsoft Excel", "nilai": 75, "grade": "B" },
@@ -21,7 +21,7 @@
     "tanggal_ujian": "06 Mei 2026",
     "tanggal_sertifikat": "13 Mei 2026",
     "nomor_sertifikat": "29042026701220227R01243515",
-    "foto": "/images/photo-mhs/10368.jpg",
+    "foto": "/images/photo-mhs/image.jpg",
     "nilai": [
       { "materi": "Microsoft Word", "nilai": 82, "grade": "A" },
       { "materi": "Microsoft Excel", "nilai": 80, "grade": "A" },
@@ -36,7 +36,7 @@
     "tanggal_ujian": "06 Mei 2026",
     "tanggal_sertifikat": "13 Mei 2026",
     "nomor_sertifikat": "29042026701220228R01243516",
-    "foto": "/images/photo-mhs/10369.jpg",
+    "foto": "/images/photo-mhs/image.jpg",
     "nilai": [
       { "materi": "Microsoft Word", "nilai": 90, "grade": "A" },
       { "materi": "Microsoft Excel", "nilai": 88, "grade": "A" },
