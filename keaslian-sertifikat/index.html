@@ -255,113 +255,90 @@
 
 <body>
     <div class="container" id="container">
-        <!-- Konten akan diisi oleh JavaScript -->
     </div>
 
     <script>
-        // Ambil ID dari URL: /keaslian-sertifikat/10367 → "10367"
         const id = window.location.pathname.split('/').filter(Boolean).pop();
+        const container = document.getElementById('container');
 
         fetch('/data.json')
-            .then(res => res.json())
-            .then(data => {
+            .then(function(res) {
+                return res.json();
+            })
+            .then(function(data) {
                 const cert = data[id];
-                const container = document.getElementById('container');
 
                 if (!cert) {
-                    container.innerHTML = `
-                        <div class="error-box">
-                            ⚠️ Sertifikat dengan ID <b>&nbsp;${id}&nbsp;</b> tidak ditemukan.
-                        </div>`;
+                    container.innerHTML = '<div class="error-box">&#9888; Sertifikat dengan ID ' + id + ' tidak ditemukan.</div>';
                     return;
                 }
 
-                // Render baris nilai
-                const nilaiRows = cert.nilai.map(n => `
-                    <tr>
-                        <td>${n.materi}</td>
-                        <td>${n.nilai}</td>
-                        <td>${n.grade}</td>
-                    </tr>
-                `).join('');
+                const nilaiRows = cert.nilai.map(function(n) {
+                    return '<tr><td>' + n.materi + '</td><td>' + n.nilai + '</td><td>' + n.grade + '</td></tr>';
+                }).join('');
 
-                container.innerHTML = `
-                    <div class="content">
-                        <div class="certificate-title">SERTIFIKAT</div>
-                        <div class="certificate-id">${cert.nomor_sertifikat}</div>
-                        <p style="font-size: 10px; color: red;">(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>
-                        <p>Unit Teknologi Informasi dan Pangkalan Data (UTIPD) <br>Universitas Islam Negeri Sultan Thaha Saifuddin Jambi menerangkan:</p>
-                        <table class="identity-table">
-                            <tr>
-                                <td>Nama</td>
-                                <td>: <b>${cert.nama}</b></td>
-                            </tr>
-                            <tr>
-                                <td>NIM</td>
-                                <td>: <b>${cert.nim}</b></td>
-                            </tr>
-                            <tr>
-                                <td>Program Studi</td>
-                                <td>: <b>${cert.prodi}</b></td>
-                            </tr>
-                        </table>
-                        <p>Telah mengikuti Ujian Praktek Teknologi Informasi dan Komunikasi (TIK) pada tanggal
-                            ${cert.tanggal_ujian}
-                            <br> dan dinyatakan <b>LULUS</b> dengan nilai:
-                        </p>
-                        <div class="details">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="color: #000; border-radius: 100px;">MATERI</th>
-                                        <th style="color: #000; border-radius: 100px;">NILAI</th>
-                                        <th style="color: #000; border-radius: 100px;">GRADE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>${nilaiRows}</tbody>
-                            </table>
-                        </div>
-                        <p style="font-size: 10px;">Sertifikat ini hanya berlaku di Universitas Islam Negeri Sulthan Thaha Saifuddin Jambi</p>
-                    </div>
+                container.innerHTML =
+                    '<div class="content">' +
+                        '<div class="certificate-title">SERTIFIKAT</div>' +
+                        '<div class="certificate-id">' + cert.nomor_sertifikat + '</div>' +
+                        '<p style="font-size:10px;color:red;">(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>' +
+                        '<p>Unit Teknologi Informasi dan Pangkalan Data (UTIPD) <br>Universitas Islam Negeri Sultan Thaha Saifuddin Jambi menerangkan:</p>' +
+                        '<table class="identity-table">' +
+                            '<tr><td>Nama</td><td>: <b>' + cert.nama + '</b></td></tr>' +
+                            '<tr><td>NIM</td><td>: <b>' + cert.nim + '</b></td></tr>' +
+                            '<tr><td>Program Studi</td><td>: <b>' + cert.prodi + '</b></td></tr>' +
+                        '</table>' +
+                        '<p>Telah mengikuti Ujian Praktek Teknologi Informasi dan Komunikasi (TIK) pada tanggal ' +
+                            cert.tanggal_ujian + '<br> dan dinyatakan <b>LULUS</b> dengan nilai:</p>' +
+                        '<div class="details">' +
+                            '<table>' +
+                                '<thead><tr>' +
+                                    '<th style="color:#000;border-radius:100px;">MATERI</th>' +
+                                    '<th style="color:#000;border-radius:100px;">NILAI</th>' +
+                                    '<th style="color:#000;border-radius:100px;">GRADE</th>' +
+                                '</tr></thead>' +
+                                '<tbody>' + nilaiRows + '</tbody>' +
+                            '</table>' +
+                        '</div>' +
+                        '<p style="font-size:10px;">Sertifikat ini hanya berlaku di Universitas Islam Negeri Sulthan Thaha Saifuddin Jambi</p>' +
+                    '</div>' +
+                    '<div class="signature-wrapper">' +
+                        '<div class="photo-box">' +
+                            '<img src="' + cert.foto + '" alt="Foto Mahasiswa" class="profile-photo">' +
+                        '</div>' +
+                        '<div class="signature">' +
+                            '<p>' +
+                                'Jambi, ' + cert.tanggal_sertifikat + '<br>' +
+                                'Kepala Unit Teknologi Informasi dan <br>Pangkalan Data <br>' +
+                                '<canvas id="qr-canvas" class="qr-code"></canvas>' +
+                                '<span class="signature-identity">' +
+                                    'Titin Agustin Nengsih, S.Si., M.Si., Ph.D<br>' +
+                                    'NIP. 198208162006042002' +
+                                '</span>' +
+                            '</p>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="qr-overlay">' +
+                        '<p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>' +
+                    '</div>';
 
-                    <div class="signature-wrapper">
-                        <div class="photo-box">
-                            <img src="${cert.foto}" alt="Foto Mahasiswa" class="profile-photo">
-                        </div>
-                        <div class="signature">
-                            <p>
-                                Jambi, ${cert.tanggal_sertifikat}<br>
-                                Kepala Unit Teknologi Informasi dan <br>Pangkalan Data <br>
-                                <canvas id="qr-canvas" class="qr-code"></canvas>
-                                <span class="signature-identity">
-                                    Titin Agustin Nengsih, S.Si., M.Si., Ph.D<br>
-                                    NIP. 198208162006042002
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="qr-overlay">
-                        <p>(Halaman ini dibuka melalui QR Code untuk keaslian sertifikat)</p>
-                    </div>
-                `;
-
-                // Generate QR Code dari URL saat ini
-                QRCode.toCanvas(
-                    document.getElementById('qr-canvas'),
-                    window.location.href,
-                    { width: 80 },
-                    function (err) {
-                        if (!err) {
-                            // Auto print setelah semua render selesai
-                            setTimeout(() => window.print(), 500);
+                // Generate QR Code — print dipanggil SETELAH QR selesai
+                try {
+                    QRCode.toCanvas(
+                        document.getElementById('qr-canvas'),
+                        window.location.href,
+                        { width: 80 },
+                        function(err) {
+                            setTimeout(function() { window.print(); }, 500);
                         }
-                    }
-                );
+                    );
+                } catch(e) {
+                    setTimeout(function() { window.print(); }, 500);
+                }
             })
-            .catch(() => {
-                document.getElementById('container').innerHTML = `
-                    <div class="error-box">Gagal memuat data sertifikat.</div>`;
+            .catch(function(err) {
+                console.error('Fetch error:', err);
+                container.innerHTML = '<div class="error-box">Gagal memuat data sertifikat.</div>';
             });
     </script>
 </body>
